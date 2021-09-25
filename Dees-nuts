@@ -1,0 +1,19 @@
+local Player           = game.Players.LocalPlayer
+local Character        = Player.Character
+local Camera           = game.Workspace.CurrentCamera
+local SpeedBoost       = 50-- What your speed is going to be when you hold shift
+local DefaultSpeed     = 16 -- What your speed is going to be when you let of shift
+local UserInputService = game:GetService("UserInputService")
+
+--Scripts
+UserInputService.InputBegan:Connect(function(key) --When player holds shift key, run code
+    if key.KeyCode == Enum.KeyCode.LeftControl then
+        Character.Humanoid.WalkSpeed = SpeedBoost
+    end 
+end)
+
+UserInputService.InputEnded:Connect(function(key)-- When player lets go of shift key, run code
+    if key.KeyCode == Enum.KeyCode.LeftControl then
+        Character.Humanoid.WalkSpeed = DefaultSpeed
+    end
+end)
